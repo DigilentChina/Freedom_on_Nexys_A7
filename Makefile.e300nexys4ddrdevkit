@@ -1,11 +1,12 @@
+# See LICENSE for license details.
 # See LICENSE.HORIE_Tetsuya for license details.
 base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
-BUILD_DIR := $(base_dir)/builds/nexys4ddrdevkit
+BUILD_DIR := $(base_dir)/builds/e300nexys4ddrdevkit
 FPGA_DIR := $(base_dir)/fpga-shells/xilinx
-MODEL := Nexys4DDRDevKitFPGAChip
-PROJECT := sifive.freedom.everywhere.nexys4ddrdevkit
-export CONFIG_PROJECT := sifive.freedom.everywhere.nexys4ddrdevkit
-export CONFIG := Nexys4DDRDevKitConfig
+MODEL := E300Nexys4DDRDevKitFPGAChip
+PROJECT := sifive.freedom.everywhere.e300nexys4ddrdevkit
+export CONFIG_PROJECT := sifive.freedom.everywhere.e300nexys4ddrdevkit
+export CONFIG := E300Nexys4DDRDevKitConfig
 export BOARD := nexys4_ddr
 export BOOTROM_DIR := $(base_dir)/bootrom/xip
 
