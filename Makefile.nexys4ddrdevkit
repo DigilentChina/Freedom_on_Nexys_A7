@@ -3,10 +3,10 @@ base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 BUILD_DIR := $(base_dir)/builds/nexys4ddrdevkit
 FPGA_DIR := $(base_dir)/fpga-shells/xilinx
 MODEL := Nexys4DDRDevKitFPGAChip
-PROJECT := horie.testsuya.everywhere.nexys4ddrdevkit
-export CONFIG_PROJECT := horie.tetsuya.nexys4ddrdevkit
+PROJECT := sifive.freedom.everywhere.nexys4ddrdevkit
+export CONFIG_PROJECT := sifive.freedom.everywhere.nexys4ddrdevkit
 export CONFIG := Nexys4DDRDevKitConfig
-export BOARD := nexys4ddr
+export BOARD := nexys4_ddr
 export BOOTROM_DIR := $(base_dir)/bootrom/xip
 
 rocketchip_dir := $(base_dir)/rocket-chip
