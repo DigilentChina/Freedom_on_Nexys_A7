@@ -12,7 +12,7 @@ import freechips.rocketchip.diplomacy.{LazyModule}
 import sifive.blocks.devices.gpio._
 import sifive.blocks.devices.spi._
 
-import sifive.fpgashells.shell.xilinx.artyshell.{ArtyShell}
+import sifive.fpgashells.shell.xilinx.nexys4ddrshell.{Nexys4DDRShell}
 import sifive.fpgashells.ip.xilinx.{IBUFG, IOBUF, PULLUP, PowerOnResetFPGAOnly}
 
 //-------------------------------------------------------------------------
