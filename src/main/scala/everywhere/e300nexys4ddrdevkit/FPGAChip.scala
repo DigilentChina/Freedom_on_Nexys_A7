@@ -13,7 +13,7 @@ import sifive.blocks.devices.gpio._
 import sifive.blocks.devices.spi._
 
 import sifive.fpgashells.shell.xilinx.nexys4ddrshell.{Nexys4DDRShell}
-import sifive.fpgashells.ip.xilinx.{IBUFG, IOBUF, PULLUP, PowerOnResetFPGAOnly}
+import sifive.fpgashells.ip.xilinx.{IBUFG, IOBUF, PULLUP, PowerOnResetFPGAOnly, STARTUPE2}
 
 //-------------------------------------------------------------------------
 // E300Nexys4DDRDevKitFPGAChip
@@ -45,7 +45,7 @@ class E300Nexys4DDRDevKitFPGAChip(implicit override val p: Parameters) extends N
     // SPI flash IOBUFs
     //---------------------------------------------------------------------
 
-    IOBUF(qspi_sck, dut.io.pins.qspi.sck)
+    STARTUPE2(dut.io.pins.qspi.sck.o.oval)
     IOBUF(qspi_cs,  dut.io.pins.qspi.cs(0))
 
     IOBUF(qspi_dq(0), dut.io.pins.qspi.dq(0))

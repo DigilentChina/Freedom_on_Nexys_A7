@@ -52,8 +52,8 @@ class E300DevKitPeripherals extends Config((site, here, up) => {
     MaskROMParams(address = 0x10000, name = "BootROM"))
 })
 
-// Freedom E300 Arty Dev Kit Peripherals
-class E300ArtyDevKitConfig extends Config(
+// Freedom E300 Nexys4 DDR Dev Kit Peripherals
+class E300Nexys4DDRDevKitConfig extends Config(
   new E300DevKitPeripherals    ++
   new DefaultFreedomEConfig().alter((site,here,up) => {
     case DTSTimebase => BigInt(32768)
