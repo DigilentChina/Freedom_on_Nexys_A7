@@ -78,6 +78,13 @@ class E300Nexys4DDRDevKitFPGAChip(implicit override val p: Parameters) extends N
     // debug reset
     dut_ndreset := dut.io.ndreset
 
+    // UART
+    IOBUF(uart_txd_in, dut.io.pins.gpio.pins(16))
+    IOBUF(uart_rxd_out, dut.io.pins.gpio.pins(17))
+    val iobuf_uart_cts = Module(new IOBUF())
+    iobuf_uart_cts.io.I := false.B
+    iobuf_uart_cts.io.T := false.B
+
     // Mirror outputs of GPIOs with PWM peripherals to RGB LEDs on Arty
     // assign RGB LED0 R,G,B inputs = PWM0(1,2,3) when iof_1 is active
     IOBUF(led0_r, dut.io.pins.gpio.pins(1))
