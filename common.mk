@@ -93,8 +93,8 @@ ifneq ($(DATAFILE),"")
 DATAFILE_PATH=$(abspath $(DATAFILE))
 endif
 mcs := $(BUILD_DIR)/obj/$(MODEL).mcs
-$(mcs): $(bit)
-	cd $(BUILD_DIR); vivado -nojournal -mode batch -source $(fpga_common_script_dir)/write_cfgmem.tcl -tclargs $(BOARD) $@ $< $(DATAFILE_PATH)
+$(mcs): $(bit) $(DATAFILE_PATH)
+	cd $(BUILD_DIR); vivado -nojournal -mode batch -source $(fpga_common_script_dir)/write_cfgmem.tcl -tclargs $(BOARD) $@ $^
 
 .PHONY: mcs
 mcs: $(mcs)
