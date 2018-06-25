@@ -7,3 +7,6 @@
 [submodule "fpga-shells"]
 	path = fpga-shells
 	url = https://github.com/horie-t/fpga-shells
+[submodule "freedom-e-sdk"]
+	path = freedom-e-sdk
+	url = https://github.com/horie-t/freedom-e-sdk.git
