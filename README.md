@@ -1,12 +1,18 @@
 Freedom 移植用フォークプロジェクトです。
-==========================
+=====================================
 
-FreedomをSiFiveがサポートしているFPGAボード以外のボードに移植していくプロジェクトです。
+FreedomをSiFiveがサポートしているFPGAボード以外のボードに移植するプロジェクトです。
 
-移植予定のボードは以下の通りです。
+移植したボードは以下の通りです。
 
-* Nexys 4 DDR Artix-7 FPGA
+* [Nexys 4 DDR Artix-7 FPGA]() (Freedom E300を移植)
 
+ビルドは、以下のように実行してください。
+
+```sh
+$ make -f Makefile.e300nexys4ddrdevkit verilog
+$ make -f Makefile.e300nexys4ddrdevkit mcs
+```
 
 Freedom
 =======
