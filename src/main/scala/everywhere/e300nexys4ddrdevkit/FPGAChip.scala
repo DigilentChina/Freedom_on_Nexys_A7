@@ -121,6 +121,19 @@ class E300Nexys4DDRDevKitFPGAChip(implicit override val p: Parameters) extends N
     IOBUF(led_2, dut.io.pins.aon.pmu.dwakeup_n.i.ival)
     IOBUF(led_3, dut.io.pins.gpio.pins(14))
 
+    IOBUF(led_4, dut.io.pins.gpio.pins(4))
+    IOBUF(led_5, dut.io.pins.gpio.pins(5))
+    IOBUF(led_6, dut.io.pins.gpio.pins(6))
+    IOBUF(led_7, dut.io.pins.gpio.pins(7))
+    IOBUF(led_8, dut.io.pins.gpio.pins(8))
+    IOBUF(led_9, dut.io.pins.gpio.pins(9))
+    IOBUF(led_10, dut.io.pins.gpio.pins(10))
+    IOBUF(led_11, dut.io.pins.gpio.pins(11))
+    IOBUF(led_12, dut.io.pins.gpio.pins(26))
+    IOBUF(led_13, dut.io.pins.gpio.pins(27))
+    IOBUF(led_14, dut.io.pins.gpio.pins(28))
+    IOBUF(led_15, dut.io.pins.gpio.pins(29))
+
     //---------------------------------------------------------------------
     // Unconnected inputs
     //---------------------------------------------------------------------
