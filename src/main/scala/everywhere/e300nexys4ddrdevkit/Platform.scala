@@ -20,6 +20,7 @@ import sifive.blocks.devices.spi._
 import sifive.blocks.devices.uart._
 import sifive.blocks.devices.i2c._
 import sifive.blocks.devices.seg7._
+import sifive.blocks.devices.vga._
 import sifive.blocks.devices.pinctrl._
 
 //-------------------------------------------------------------------------

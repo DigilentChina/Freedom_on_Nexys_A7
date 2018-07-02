@@ -17,6 +17,7 @@ import sifive.blocks.devices.spi._
 import sifive.blocks.devices.uart._
 import sifive.blocks.devices.i2c._
 import sifive.blocks.devices.seg7._
+import sifive.blocks.devices.vga._
 
 // Default FreedomEConfig
 class DefaultFreedomEConfig extends Config (
@@ -49,6 +50,8 @@ class E300DevKitPeripherals extends Config((site, here, up) => {
     I2CParams(address = 0x10016000))
   case PeripherySeg7LEDKey => List(
     Seg7LEDParams(address = 0x10017000))
+  case PeripheryVGAKey => List(
+    VGAParams(address = 0x10080000))
   case PeripheryMockAONKey =>
     MockAONParams(address = 0x10000000)
   case PeripheryMaskROMKey => List(
