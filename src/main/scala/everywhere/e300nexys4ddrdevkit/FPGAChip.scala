@@ -154,6 +154,28 @@ class E300Nexys4DDRDevKitFPGAChip(implicit override val p: Parameters) extends N
     IOBUF(seg7_an_6, dut.io.pins.seg7.anodes(6))
     IOBUF(seg7_an_7, dut.io.pins.seg7.anodes(7))
 
+    // VGA Display
+    IOBUF(vga_red_0, dut.io.pins.vga.red(0))
+    IOBUF(vga_red_1, dut.io.pins.vga.red(1))
+    IOBUF(vga_red_2, dut.io.pins.vga.red(2))
+    IOBUF(vga_red_3, dut.io.pins.vga.red(3))
+
+    IOBUF(vga_green_0, dut.io.pins.vga.green(0))
+    IOBUF(vga_green_1, dut.io.pins.vga.green(1))
+    IOBUF(vga_green_2, dut.io.pins.vga.green(2))
+    IOBUF(vga_green_3, dut.io.pins.vga.green(3))
+
+    IOBUF(vga_blue_0, dut.io.pins.vga.blue(0))
+    IOBUF(vga_blue_1, dut.io.pins.vga.blue(1))
+    IOBUF(vga_blue_2, dut.io.pins.vga.blue(2))
+    IOBUF(vga_blue_3, dut.io.pins.vga.blue(3))
+
+    IOBUF(vga_hSync, dut.io.pins.vga.hSync)
+    IOBUF(vga_vSync, dut.io.pins.vga.vSync)
+
+    dut.io.pins.vga.clock := clock_25MHz
+    dut.io.pins.vga.reset := ~ck_rst
+
     //---------------------------------------------------------------------
     // Unconnected inputs
     //---------------------------------------------------------------------

@@ -44,7 +44,8 @@ class E300Nexys4DDRDevKitPlatformIO(implicit val p: Parameters) extends Bundle {
     val gpio = new GPIOPins(() => PinGen(), p(PeripheryGPIOKey)(0))
     val qspi = new SPIPins(() => PinGen(), p(PeripherySPIFlashKey)(0))
     val seg7 = new Seg7LEDPins(() => PinGen())
-    val aon = new MockAONWrapperPins()
+    val vga  = new VGAPins(() => PinGen())
+    val aon  = new MockAONWrapperPins()
   }
   val jtag_reset = Bool(INPUT)
   val ndreset    = Bool(OUTPUT)
@@ -166,8 +167,11 @@ class E300Nexys4DDRDevKitPlatform(implicit val p: Parameters) extends Module {
   // Dedicated SPI Pads
   SPIPinsFromPort(io.pins.qspi, sys.qspi(0), clock = sys.clock, reset = sys.reset, syncStages = 3)
 
-  // Dedicated SPI Pads
+  // Dedicated Seg 7 LED Pads
   Seg7LEDPinsFromPort(io.pins.seg7, sys.seg7Led(0), clock = sys.clock, reset = sys.reset, syncStages = 0)
+
+  // Dedicated VGA Pads
+  VGAPinsFromPort(io.pins.vga, sys.vga(0), clock = sys.clock, reset = sys.reset, syncStages = 0)
 
   // JTAG Debug Interface
   val sjtag = sys.debug.systemjtag.get
