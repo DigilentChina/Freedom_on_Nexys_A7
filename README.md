@@ -5,7 +5,7 @@ FreedomをSiFiveがサポートしているFPGAボード以外のボードに移
 
 移植したボードは以下の通りです。
 
-* [Nexys 4 DDR Artix-7 FPGA]() (Freedom E300を移植)
+* [Nexys 4 DDR Artix-7 FPGA](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start) (Freedom E300を移植)
 
 ビルドは、以下のように実行してください。
 
@@ -17,65 +17,60 @@ $ make -f Makefile.e300nexys4ddrdevkit mcs
 Freedom
 =======
 
-This repository contains the RTL created by SiFive for its Freedom E300 and U500
-platforms. The Freedom E310 Arty FPGA Dev Kit implements the Freedom E300
-Platform and is designed to be mapped onto an [Arty FPGA Evaluation
-Kit](https://www.xilinx.com/products/boards-and-kits/arty.html). The Freedom
-U500 VC707 FPGA Dev Kit implements the Freedom U500 Platform and is designed to
-be mapped onto a [VC707 FPGA Evaluation
-Kit](https://www.xilinx.com/products/boards-and-kits/ek-v7-vc707-g.html).
-Both systems boot autonomously and can be controlled via an external debugger.
+このリポジトリは、SiFiveによって作成された、Freedom E300、U500プラットフォームのRTLを含みます。
+Freedom E310 Arty FPGA開発キットは、Freedom E300プラットフォームを実装し、[Arty FPGA Evaluation
+Kit](https://www.xilinx.com/products/boards-and-kits/arty.html) に対して設計されたものです。
+FreedomU500 VC707 FPGA開発キットは、Freedom U500プラットフォームを実装し、[VC707 FPGA Evaluation
+Kit](https://www.xilinx.com/products/boards-and-kits/ek-v7-vc707-g.html) に対して設計された
+ものです。
+両システムは、自律的に起動し、外部デバッガーで制御されます。
 
-Please read the section corresponding to the kit you are interested in for
-instructions on how to use this repo.
+このリポジトリの使い方の説明書については、関心のある開発Kitに対応する節を読んで下さい。
 
-Software Requirement
+ソフトウェア要件
 --------------------
 
-To compile the bootloaders for both Freedom E300 Arty and U500 VC707
-FPGA dev kits, the RISC-V software toolchain must be installed locally and
-set the $(RISCV) environment variable to point to the location of where the
-RISC-V toolchains are installed. You can build the toolchain from scratch
-or download the tools here: https://www.sifive.com/products/tools/
+Freedom E300 ArtyとU500 VC707 FPGA開発キットのブートローダーをコンパイルするために、
+RISC-Vソフトウェア・ツールチェインをローカルにインストールして、$(RISCV)環境変数を
+RISC-Vツールチェインがインストールされた場所を指すようにセットしなければなりません。
+ツールチェインは、スクラッチからビルドする事もできますし、以下からダウンロードする事もできます。
+https://www.sifive.com/products/tools/
 
 
-Freedom E300 Arty FPGA Dev Kit
+Freedom E300 Arty FPGA開発キット
 ------------------------------
 
-The Freedom E300 Arty FPGA Dev Kit implements a Freedom E300 chip.
+Freedom E300 Arty FPGA開発キットは、Freedom E300チップを実装しています。
 
-### How to build
+### ビルド方法
 
-The Makefile corresponding to the Freedom E300 Arty FPGA Dev Kit is
-`Makefile.e300artydevkit` and it consists of two main targets:
+Freedom E300 Arty FPGA開発キットに対応するMakeファイルは、`Makefile.e300artydevkit` です。
+このMakeファイルは、2つの主なビルド・ターゲットからなります:
 
-- `verilog`: to compile the Chisel source files and generate the Verilog files.
-- `mcs`: to create a Configuration Memory File (.mcs) that can be programmed
-onto an Arty FPGA board.
+- `verilog`: Chiselソースファイルをコンパイルし、Verilogファイルを生成します。
+- `mcs`: Arty FPGAをプログラムする事ができる、Configuration Memoryファイル(.mcs)を生成します。
 
-To execute these targets, you can run the following commands:
+これらのターゲットを実行するには、下記のコマンドを実行します:
 
 ```sh
 $ make -f Makefile.e300artydevkit verilog
 $ make -f Makefile.e300artydevkit mcs
 ```
 
-Note: This flow requires Vivado 2017.1. Old versions are known to fail.
+注意: この手順は、Vivado 2017.1が必要です。古いバージョンは失敗する事が判明しています。
 
-These will place the files under `builds/e300artydevkit/obj`.
+これらは、`builds/e300artydevkit/obj` にファイルを出力します。
 
-Note that in order to run the `mcs` target, you need to have the `vivado`
-executable on your `PATH`.
+`mcs` ターゲットを実行するには、vivado 実行ファイルが、`PATH`に含まれている必要があります。
 
 ### Bootrom
 
-The default bootrom consists of a program that immediately jumps to address
-0x20400000, which is 0x00400000 bytes into the SPI flash memory on the Arty
-board.
+デフォルトのbootromは、アドレス0x20400000に即座にジャンプするプログラムで構成されています。
+このプログラムは、ArtyボードのSPIフラッシュ・メモリの0x00400000バイト目に保存されます。
 
-### Using the generated MCS Image
+### 生成したMCSイメージの使用方法
 
-For instructions for getting the generated image onto an FPGA and programming it with software using the [Freedom E SDK](https://github.com/sifive/freedom-e-sdk), please see the [Freedom E310 Arty FPGA Dev Kit Getting Started Guide](https://www.sifive.com/documentation/freedom-soc/freedom-e300-arty-fpga-dev-kit-getting-started-guide/).
+生成したイメージをFPGAに載せて、ソフトウェアと一緒にプログラムする手順については、[Freedom E SDK](https://github.com/sifive/freedom-e-sdk)を使用して、[Freedom E310 Arty FPGA Dev Kit Getting Started Guide](https://www.sifive.com/documentation/freedom-soc/freedom-e300-arty-fpga-dev-kit-getting-started-guide/)を参照して下さい。
 
 Freedom U500 VC707 FPGA Dev Kit
 -------------------------------
