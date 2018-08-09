@@ -1,5 +1,5 @@
 // See LICENSE for license details.
-package sifive.freedom.unleashed.u500vc707devkit
+package sifive.freedom.unleashed.u500nexys4ddrdevkit
 
 import Chisel._
 
@@ -25,7 +25,7 @@ class U500Nexys4DDRDevKitSystem(implicit p: Parameters) extends RocketSubsystem
     with HasPeripheryUART
     with HasPeripherySPI
     with HasPeripheryGPIO
-    with HasMemoryXilinxVC707MIG {
+    with HasMemoryXilinxNexys4DDRMIG {
   override lazy val module = new U500Nexys4DDRDevKitSystemModule(this)
 }
 
@@ -35,7 +35,7 @@ class U500Nexys4DDRDevKitSystemModule[+L <: U500Nexys4DDRDevKitSystem](_outer: L
     with HasPeripheryUARTModuleImp
     with HasPeripherySPIModuleImp
     with HasPeripheryGPIOModuleImp
-    with HasMemoryXilinxVC707MIGModuleImp {
+    with HasMemoryXilinxNexys4DDRMIGModuleImp {
   // Reset vector is set to the location of the mask rom
   val maskROMParams = p(PeripheryMaskROMKey)
   global_reset_vector := maskROMParams(0).address.U

@@ -41,7 +41,7 @@ class U500Nexys4DDRDevKitConfig extends Config(
   new FreedomUNexys4DDRConfig().alter((site,here,up) => {
     case ErrorParams => ErrorParams(Seq(AddressSet(0x3000, 0xfff)), maxAtomic=site(XLen)/8, maxTransfer=128)
     case PeripheryBusKey => up(PeripheryBusKey, site).copy(frequency = 50000000) // 50 MHz hperiphery
-    case MemoryXilinxDDRKey => XilinxVC707MIGParams(address = Seq(AddressSet(0x80000000L,0x40000000L-1))) //1GB
+    case MemoryXilinxDDRKey => XilinxNexys4DDRMIGParams(address = Seq(AddressSet(0x80000000L,0x40000000L-1))) //1GB
     case DTSTimebase => BigInt(1000000)
     case ExtMem => up(ExtMem).map(_.copy(size = 0x40000000L))
   })

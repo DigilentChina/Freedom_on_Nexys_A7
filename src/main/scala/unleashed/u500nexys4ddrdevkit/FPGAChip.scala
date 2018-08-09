@@ -10,7 +10,7 @@ import freechips.rocketchip.diplomacy._
 import sifive.blocks.devices.gpio._
 import sifive.blocks.devices.pinctrl.{BasePin}
 
-import sifive.fpgashells.shell.xilinx.nexys4ddrshell._
+import sifive.fpgashells.shell.xilinx.u500nexys4ddrshell._
 import sifive.fpgashells.ip.xilinx.{IOBUF}
 
 //-------------------------------------------------------------------------
@@ -28,7 +28,7 @@ object PinGen {
 //-------------------------------------------------------------------------
 
 class U500Nexys4DDRDevKitFPGAChip(implicit override val p: Parameters)
-    extends Nexys4DDRShell
+    extends U500Nexys4DDRShell
     with HasDDR3 {
 
   //-----------------------------------------------------------------------
