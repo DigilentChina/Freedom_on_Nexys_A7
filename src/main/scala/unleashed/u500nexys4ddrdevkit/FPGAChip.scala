@@ -29,7 +29,7 @@ object PinGen {
 
 class U500Nexys4DDRDevKitFPGAChip(implicit override val p: Parameters)
     extends U500Nexys4DDRShell
-    with HasDDR3 {
+    with HasDDR2 {
 
   //-----------------------------------------------------------------------
   // DUT
