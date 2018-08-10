@@ -18,7 +18,7 @@ import sifive.fpgashells.devices.xilinx.xilinxnexys4ddrmig.{MemoryXilinxDDRKey,X
 // Default FreedomUNexys4DDRConfig
 class FreedomUNexys4DDRConfig extends Config(
   new WithNMemoryChannels(1) ++
-  new WithNBigCores(4)       ++
+  new WithNBigCores(1)       ++
   new BaseConfig
 )
 
