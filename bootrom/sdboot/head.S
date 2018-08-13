@@ -5,6 +5,7 @@
 
 #define GPIO_BASE 0x64002000
 #define UART_BASE 0x64000000
+#define RAM_BASE  0x80000000
 	
   .section .text.init
   .option norvc
@@ -23,9 +24,26 @@ _prog_start:
 	li t2, UART_TXEN
 	li t3, UART_BASE + UART_REG_TXCTRL
 	sh t2, 0(t3)
-	li t2, 0x41
-	li t3, UART_BASE
+	
+	li t2, 0x41		// t2 = 'A'
+	li t3, UART_BASE + UART_REG_TXFIFO
 	sb t2, 0(t3)
+
+	li t0, 0x62		// t0 = 'b'
+	sb t0, 0(t3)
+	li t1, RAM_BASE
+	sb t0, 0(t1)
+//	lb t2, 0(t1)
+	li t0, 0x63		// t0 = 'c'
+	sb t0, 0(t3)
+//	bnez t2, lb_error
+//lb_success:	
+//	sb t2, 0(t3)
+//	j 1f
+//lb_error:
+//	li t2, 0x61
+//	sb t2, 0(t3)
+//1:	
 
   li sp, (PAYLOAD_DEST + 0x7fff000)
   call main
