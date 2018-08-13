@@ -10,5 +10,5 @@ MEMORY
   uart_ctrl (rw) : ORIGIN = 0x54000000, LENGTH = 0x1000
   spi_ctrl (rw) : ORIGIN = 0x54001000, LENGTH = 0x1000
   gpio_ctrl (rw) : ORIGIN = 0x54002000, LENGTH = 0x1000
-  memory_mem (rwx) : ORIGIN = 0x80000000, LENGTH = 0x40000000
+  memory_mem (rwx) : ORIGIN = 0x80000000, LENGTH = 0x8000000
 }
