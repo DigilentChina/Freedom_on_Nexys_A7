@@ -8,12 +8,6 @@
   .globl _prog_start
 _prog_start:
   smp_pause(s1, s2)
-
-	li t0, 100000000 / 100
-sd_power_wait:	
-	addi t0, t0, -1
-	bnez t0, sd_power_wait
-	
   li sp, (PAYLOAD_DEST + 0x7fff000)
   call main
   smp_resume(s1, s2)
