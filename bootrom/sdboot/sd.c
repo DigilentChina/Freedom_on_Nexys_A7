@@ -52,6 +52,8 @@ static uint8_t sd_cmd(uint8_t cmd, uint32_t arg, uint8_t crc)
 		if (!(r & 0x80)) {
 //			dprintf("sd:cmd: %hx\r\n", r);
 			goto done;
+		} else if (r != 0xFF) {
+			dprintf("sd:cmd_error_res: %hx\r\n", r);
 		}
 	} while (--n > 0);
 	kputs("sd_cmd: timeout");

@@ -58,12 +58,12 @@ class U500Nexys4DDRDevKitFPGAChip(implicit override val p: Parameters)
     GPIOPinsFromPort(gpio_pins, dut.gpio(0))
 
     gpio_pins.pins.foreach { _.i.ival := Bool(false) }
-    gpio_pins.pins.zipWithIndex.foreach {
-      case(pin, idx) => led(idx) := pin.o.oval
-    }
+    // gpio_pins.pins.zipWithIndex.foreach {
+    //   case(pin, idx) => led(idx) := pin.o.oval
+    // }
 
-    // tie to zero
-    for( idx <- 7 to 4 ) { led(idx) := false.B }
+    // // tie to zero
+    // for( idx <- 7 to 4 ) { led(idx) := false.B }
   }
 
 }
