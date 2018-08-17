@@ -25,7 +25,7 @@ class FreedomUNexys4DDRConfig extends Config(
 // Freedom U500 Nexys4 DDR Dev Kit Peripherals
 class U500Nexys4DDRDevKitPeripherals extends Config((site, here, up) => {
   case PeripheryUARTKey => List(
-    UARTParams(address = BigInt(0x64000000L)))
+    UARTParams(address = BigInt(0x64000000L), nTxEntries = 512))
   case PeripherySPIKey => List(
     SPIParams(rAddress = BigInt(0x64001000L)))
   case PeripheryGPIOKey => List(
