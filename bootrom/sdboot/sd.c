@@ -11,6 +11,7 @@
 #define MAX_CORES 8
 
 #define PAYLOAD_SIZE	(16 << 11)
+#define MBR_SIZE 1
 
 #define F_CLK 50000000UL
 
@@ -156,8 +157,7 @@ static const char spinner[] = { '-', '/', '|', '\\' };
 static int copy(void)
 {
 	volatile uint8_t *p = (void *)(PAYLOAD_DEST);
-	//	long i = PAYLOAD_SIZE;
-	long i = 1;
+	long i = MBR_SIZE;
 	int rc = 0;
 
 	dputs("CMD18");
@@ -176,11 +176,7 @@ static int copy(void)
 		n = 512;
 		while (sd_dummy() != 0xFE);
 		do {
-			/* if (n % 16 == 0) { */
-			/* 	dputs(""); */
-			/* } */
 			uint8_t x = sd_dummy();
-			/* dprintf("%hx ", x); */
 			*p++ = x;
 			crc = crc16_round(crc, x);
 		} while (--n > 0);
@@ -194,33 +190,17 @@ static int copy(void)
 			break;
 		}
 
-		/* if (SPIN_UPDATE(i)) { */
-		/* 	kputc('\b'); */
-		/* 	kputc(spinner[SPIN_INDEX(i)]); */
-		/* } */
+		if (SPIN_UPDATE(i)) {
+			kputc('\b');
+			kputc(spinner[SPIN_INDEX(i)]);
+		}
 	} while (--i > 0);
 	sd_cmd_end();
 
-	/* sd_cmd(0x4C, 0, 0x01); */
-	/* sd_cmd_end(); */
-	/* kputs("\b "); */
+	sd_cmd(0x4C, 0, 0x01);
+	sd_cmd_end();
+	kputs("\b ");
 	return rc;
-}
-
-int dumpLoadData()
-{
-  volatile uint8_t *p = (void *)(PAYLOAD_DEST);
-
-  int n = 512;
-  do {
-    if (n % 16 == 0) {
-      dputs("");
-    }
-    dprintf("%hx ", *p++);
-  } while (--n > 0);
-  dputs("");
-
-  return 0;
 }
 
 int main(void)
@@ -234,8 +214,7 @@ int main(void)
 	    sd_acmd41() ||
 	    sd_cmd58() ||
 	    sd_cmd16() ||
-	    copy()
-			) {
+	    copy()) {
 		kputs("ERROR");
 		return 1;
 	}
