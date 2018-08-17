@@ -10,3 +10,6 @@
 [submodule "freedom-e-sdk"]
 	path = freedom-e-sdk
 	url = https://github.com/horie-t/freedom-e-sdk.git
+[submodule "freedom-u-sdk"]
+	path = freedom-u-sdk
+	url = https://github.com/horie-t/freedom-u-sdk.git

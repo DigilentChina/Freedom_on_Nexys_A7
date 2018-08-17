@@ -11,6 +11,7 @@
 #define MAX_CORES 8
 
 #define PAYLOAD_SIZE	(16 << 11)
+#define MBR_SIZE 1
 
 #define F_CLK 50000000UL
 
@@ -156,7 +157,7 @@ static const char spinner[] = { '-', '/', '|', '\\' };
 static int copy(void)
 {
 	volatile uint8_t *p = (void *)(PAYLOAD_DEST);
-	long i = PAYLOAD_SIZE;
+	long i = MBR_SIZE;
 	int rc = 0;
 
 	dputs("CMD18");
