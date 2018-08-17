@@ -227,21 +227,21 @@ int main(void)
 {
 	REG32(uart, UART_REG_TXCTRL) = UART_TXEN;
 
-	/* kputs("INIT"); */
-	/* sd_poweron(); */
-	/* if (sd_cmd0() || */
-	/*     sd_cmd8() || */
-	/*     sd_acmd41() || */
-	/*     sd_cmd58() || */
-	/*     sd_cmd16() || */
-	/*     copy() */
-	/* 		) { */
-	/* 	kputs("ERROR"); */
-	/* 	return 1; */
-	/* } */
+	kputs("INIT");
+	sd_poweron();
+	if (sd_cmd0() ||
+	    sd_cmd8() ||
+	    sd_acmd41() ||
+	    sd_cmd58() ||
+	    sd_cmd16() ||
+	    copy()
+			) {
+		kputs("ERROR");
+		return 1;
+	}
 
-	/* kputs("BOOT"); */
+	kputs("BOOT");
 
-	/* __asm__ __volatile__ ("fence.i" : : : "memory"); */
+	__asm__ __volatile__ ("fence.i" : : : "memory");
 	return 0;
 }
