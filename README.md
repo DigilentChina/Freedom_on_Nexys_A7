@@ -3,9 +3,18 @@ Freedom 移植用フォークプロジェクトです。
 
 FreedomをSiFiveがサポートしているFPGAボード以外のボードに移植するプロジェクトです。
 
+移植先ハードウェア
+-----------------
+
 移植したボードは以下の通りです。
 
-* [Nexys 4 DDR Artix-7 FPGA](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start) (Freedom E300を移植)
+* [Nexys 4 DDR Artix-7 FPGA](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start) 
+Freedom E300、U500を移植
+
+ビルド方法
+----------
+
+### Freedom E300の場合
 
 ビルドは、以下のように実行してください。
 
@@ -13,6 +22,17 @@ FreedomをSiFiveがサポートしているFPGAボード以外のボードに移
 $ make -f Makefile.e300nexys4ddrdevkit verilog
 $ make -f Makefile.e300nexys4ddrdevkit mcs
 ```
+
+### Freedom U500の場合
+
+ビルドは、以下のように実行してください。
+
+```sh
+$ make -f Makefile.u500nexys4ddrdevkit verilog
+$ make -f Makefile.u500nexys4ddrdevkit mcs
+```
+
+起動時に、SDカードのMBR(Master Boot Record)を、アドレス0x80000000にコピーして、実行するようになっています。
 
 Freedom
 =======
